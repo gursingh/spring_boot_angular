@@ -1,0 +1,27 @@
+<div ng-controller="emailStatusCtrl">
+    <table class="table">
+      <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+        <td>{{row.name}}</td>
+        <td>{{row.email_id}}</td>
+        <td>
+        	<div class="checkbox checkbox-success">
+                <input id="checkbox3" class="styled" type="checkbox" ng-checked="{{row.email_response}}">
+                <label for="checkbox3">
+                	Status
+                </label>
+            </div>
+        </td>
+        <td>
+        	<div class="checkbox checkbox-success">
+            	<input id="checkbox3" class="styled" type="checkbox" ng-checked="{{row.email_status}}">
+            	<label for="checkbox3">
+                	Status
+            	</label>
+            </div>
+        </td>
+      </tr>
+    </table>
+View <select ng-model="viewby" ng-change="setItemsPerPage(viewby)"><option>3</option><option>5</option><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option></select> records at a time.
+
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+    

@@ -1,0 +1,97 @@
+ body {
+	margin: 0;
+	padding: 0;
+ }
+ 
+ #background 
+{ 
+	 left: 0px; 
+	 top: 0px; 
+	 position: relative; 
+	 margin-left: auto; 
+	 margin-right: auto; 
+	 width: 730px;
+	 height: 419px; 
+	 overflow: hidden;
+	 z-index:0;
+	} 
+
+ #Background 
+{ 
+	 left: -422px; 
+	 top: -147px; 
+	 position: absolute; 
+	 width: 1575px;
+	 height: 713px;
+	 z-index:1;
+} 
+
+ #AltBackground 
+{ 
+	 left: -410px; 
+	 top: -166px; 
+	 position: absolute; 
+	 width: 1575px;
+	 height: 713px;
+	 z-index:2;
+} 
+
+ #Wearesorrybutthepage 
+{ 
+	 left: 130px; 
+	 top: 317px; 
+	 position: absolute; 
+	 width: 495px;
+	 height: 16px;
+	 z-index:3;
+} 
+
+ #Shadow44 
+{ 
+	 left: 157px; 
+	 top: 275px; 
+	 position: absolute; 
+	 width: 500px;
+	 height: 17px;
+	 z-index:4;
+} 
+
+ #ShadowO 
+{ 
+	 left: 299px; 
+	 top: 279px; 
+	 position: absolute; 
+	 width: 134px;
+	 height: 18px;
+	 z-index:5;
+} 
+
+ #layer_404 
+{ 
+	 left: 61px; 
+	 top: 83px; 
+	 position: absolute; 
+	 width: 592px;
+	 height: 206px;
+	 z-index:6;
+} 
+
+ #HighlightIregular 
+{ 
+	 left: 61px; 
+	 top: 83px; 
+	 position: absolute; 
+	 width: 592px;
+	 height: 200px;
+	 z-index:7;
+} 
+
+ #DarkEdge 
+{ 
+	 left: 61px; 
+	 top: 84px; 
+	 position: absolute; 
+	 width: 592px;
+	 height: 205px;
+	 z-index:8;
+} 

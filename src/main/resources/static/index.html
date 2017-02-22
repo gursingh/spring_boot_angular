@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo">
+    <head>
+        <meta charset="utf-8">
+        <title>AngularJS ui-uploader</title>
+        <!-- Fix for old browsers -->
+        <script src="http://nervgh.github.io/js/es5-shim.min.js"></script>
+        <script src="http://nervgh.github.io/js/es5-sham.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="console-sham.js"></script>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-route.min.js"></script>
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/bower_components/Font-Awesome/css/font-awesome.css"/>
+        <link rel="stylesheet" href="css/build.css"/>
+        <script src="dist/angular-file-upload.min.js"></script>
+
+        <script src="app.js"></script>
+        <script src="scripts/uploader_code.js"></script>
+        <script src="scripts/confirmation_form_code.js"></script>
+        <script src="scripts/email_status_code.js"></script>
+        <script src="scripts/not_found_code.js"></script>
+        <style>
+            .my-drop-zone { border: dotted 3px lightgray; }
+            .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+            .another-file-over-class { border: dotted 3px green; }
+            html, body { height: 100%; }
+        </style>
+    </head>
+
+
+    <body >
+       <div class="container">
+        <div class="row">
+            <div class="Absolute-Center is-Responsive">
+                <div id="logo-container"></div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <div class="navbar navbar-default">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="https://github.com/nervgh/angular-file-upload">Angular File Upload</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Demos <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="active"><a href="#">Simple example</a></li>
+                                <li><a href="../image-preview">Uploads only images (with canvas preview)</a></li>
+                                <li><a href="../without-bootstrap">Without bootstrap example</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://github.com/nervgh/angular-file-upload">View on Github</a></li>
+                        <li><a href="https://raw.githubusercontent.com/nervgh/angular-file-upload/master/dist/angular-file-upload.min.js">Download</a></li>
+                    </ul>
+                </div>
+            </div>
+                    <ng-view></ng-view>       
+                </div>  
+            </div>    
+        </div>
+       </div>
+
+    </body>
+</html>

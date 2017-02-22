@@ -1,0 +1,60 @@
+<div ng-controller="confirmationFormCtrl">
+	<h1>CXO factory program</h1>
+	<p>We would be interested in knowing a little more about your
+		thoughts, ideas and aspirations. This will help us present the right
+		ingredient to help you excel in your current ecosystem before
+		venturing into the world beyond. Please respond to the below
+		questions:-{{id}}</p>
+	<form ng-submit="submitStudnetForm()" role="form">
+
+		<div class="row">
+			<div class="form-group col-xs-4">
+				<label for="name">Name</label> <input type="text"
+					class="form-control" name="name" ng-model="choice.name" ng-required="true" placeholder="Full Name">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-xs-4">
+				<label for="name">Email</label> <input type="email"
+					ng-required="true" class="form-control" name="email"
+					ng-model="choice.email" placeholder="email@domain">
+			</div>
+		</div>
+		<label>What do you want to become in the next 5 yrs</label>
+		<div class="form-group">
+			<div data-ng-repeat="p in cxoopts">
+				<div class="radio">
+					<label> <input type="radio" name="cxo" ng-value="p.value"
+						ng-model="choice.cxo" ng-required="true"> {{p.text}}
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<label>What Salary would you like to earn in the next 5 yrs</label>
+		<div class="form-group">
+			<div data-ng-repeat="p in salaryopts">
+				<div class="radio">
+					<label> <input type="radio" name="salary"
+						ng-value="p.value" ng-model="choice.salary" ng-required="true"> {{p.text}}
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<label>How much time would you be able to spend for your
+			learning</label>
+		<div class="form-group">
+			<div data-ng-repeat="p in timeopts">
+				<div class="radio">
+					<label> <input type="radio" name="timeEst"
+						ng-value="p.value" ng-model="choice.timeEst" ng-required="true"> {{p.text}}
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<input type="submit" value="Save" class="btn btn-danger btn-lg" /> <br />
+	</form>
+
+</div>
