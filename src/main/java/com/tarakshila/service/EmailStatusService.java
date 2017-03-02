@@ -10,4 +10,6 @@ public interface EmailStatusService {
 	public String emailConfirmationReply(String code, String applicantEmailId);
 
 	public List<EmailStatus> findAll(int pageNumber, int pageSize);
+
+	public long findTotalCount();
 }

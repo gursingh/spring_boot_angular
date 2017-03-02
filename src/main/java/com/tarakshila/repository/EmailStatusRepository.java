@@ -15,4 +15,6 @@ public interface EmailStatusRepository {
 	public List<EmailStatus> findAll(int pageNumber, int pageSize);
 
 	public EmailStatus findByApplicantId(long applicantId);
+
+	public long countById();
 }

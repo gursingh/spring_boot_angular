@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.UUID;
 
@@ -86,12 +87,14 @@ public class FileProcessor implements Runnable {
 					emailInfoBean.setMessageBody(createHtmlEmailBody(
 							confirmationLink, applicant.getName()));
 					emailInfoBean.setReceiverEmailId(applicant.getEmailId());
-					emailInfoBean.setSubject("Subject");
+					emailInfoBean
+							.setSubject("CXO Factory - a TKC knowledge initiative");
 					EmailHandlerExecutor.getInstance().sendMessage(
 							emailInfoBean);
 					EmailStatus emailStatus = new EmailStatus();
 					emailStatus.setApplicant(applicant);
 					emailStatus.setUniqueCode(userUniqueConfirmationLink);
+					emailStatus.setCreationDate(new Date());
 					emailStatusService.saveEmailStatus(emailStatus);
 				}
 

@@ -53,12 +53,17 @@ public class EmailStatusServiceImpl implements EmailStatusService {
 	@Override
 	public List<EmailStatus> findAll(int pageNumber, int pageSize) {
 		List<EmailStatus> result = new ArrayList<EmailStatus>();
-		List<EmailStatus> emailStatusList = (ArrayList<EmailStatus>)emailStatusRepository.findAll(
-				pageNumber, pageSize);
+		List<EmailStatus> emailStatusList = (ArrayList<EmailStatus>) emailStatusRepository
+				.findAll(pageNumber, pageSize);
 		for (EmailStatus emailStatus : emailStatusList) {
 			result.add(emailStatus);
 		}
 		return result;
+	}
+
+	@Override
+	public long findTotalCount() {
+		return emailStatusRepository.countById();
 	}
 
 }

@@ -6,9 +6,9 @@
 			<th>Email Status</th>
 			<th>clicked</th>
 			<th>Replied</th>
+			<th>Date</th>
 		</tr>
-		<tr
-			ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+		<tr ng-repeat="row in data">
 			<td>{{row.applicantName}}</td>
 			<td>{{row.emailId}}</td>
 			<td>
@@ -33,6 +33,12 @@
 						ng-checked="{{row.replied}}" onclick="return false;"
 						onkeydown="return false;"> <label for="checkbox5">
 						Status </label>
+				</div>
+			</td>
+			<td>
+				<div>
+					<label ng-bind="formatDate(row.creationDate) |  date:'MM/dd/yyyy'"></label>
+
 				</div>
 			</td>
 		</tr>

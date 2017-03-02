@@ -1,7 +1,5 @@
 package com.tarakshila.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tarakshila.entity.EmailResponseDetail;
-import com.tarakshila.entity.EmailStatus;
+import com.tarakshila.response.EmailStatusResponse;
 import com.tarakshila.response.Response;
 import com.tarakshila.service.EmailResponseDetailService;
 import com.tarakshila.service.EmailStatusService;
@@ -35,9 +33,13 @@ public class EmailResponseController {
 	}
 
 	@RequestMapping(value = "/responsestatus")
-	public List<EmailStatus> getEmailResponseDetail(
+	public EmailStatusResponse getEmailResponseDetail(
 			@RequestParam("page") int page, @RequestParam("size") int size) {
-		return emailStatusService.findAll(page - 1, size);
+		EmailStatusResponse emailStatusResponse = new EmailStatusResponse();
+		emailStatusResponse.setEmailStatus(emailStatusService.findAll(page - 1,
+				size));
+		emailStatusResponse.setTotalCount(emailStatusService.findTotalCount());
+		return emailStatusResponse;
 	}
 
 	@RequestMapping(value = "/responsedetail", method = RequestMethod.POST)
@@ -48,7 +50,7 @@ public class EmailResponseController {
 		if (response == null) {
 			response = "some problem in server side";
 		}
-		Response response2=new Response();
+		Response response2 = new Response();
 		response2.setMessage(response);
 		return response2;
 	}
