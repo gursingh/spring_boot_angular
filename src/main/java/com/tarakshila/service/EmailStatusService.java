@@ -12,4 +12,6 @@ public interface EmailStatusService {
 	public List<EmailStatus> findAll(int pageNumber, int pageSize);
 
 	public long findTotalCount();
+
+	public void updateEmailStatusByApplicantEmail(String emailId, boolean status);
 }

@@ -1,25 +1,32 @@
 package com.tarakshila.handler.email;
 
+import java.util.List;
+
+import com.tarakshila.service.EmailStatusService;
+
 public class MailThread implements Runnable {
 	private int numberOfTry;
-	private EmailInfoBean emailInfoBean = null;
+	private List<EmailInfoBean> emailInfoBeans = null;
 	private CustomThreadPoolExecutor executor = null;
+	private EmailStatusService emailStatusService;
 
-	public MailThread(EmailInfoBean messageInfoBean,
-			CustomThreadPoolExecutor executor) {
-		this.emailInfoBean = messageInfoBean;
+	public MailThread(List<EmailInfoBean> messageInfoBeans,
+			CustomThreadPoolExecutor executor,
+			EmailStatusService emailStatusService) {
+		this.emailInfoBeans = messageInfoBeans;
 		this.executor = executor;
+		this.emailStatusService = emailStatusService;
 	}
 
-	public EmailInfoBean getMessageInfoBean() {
-		return this.emailInfoBean;
+	public List<EmailInfoBean> getMessageInfoBean() {
+		return this.emailInfoBeans;
 	}
 
 	@Override
 	public void run() {
 		try {
 			numberOfTry++;
-			EmailUtil.sendMessage(emailInfoBean);
+			EmailUtil.sendMessage(emailInfoBeans, emailStatusService);
 		} catch (Exception e) {
 			if (numberOfTry < 4) {
 				executor.execute(this);

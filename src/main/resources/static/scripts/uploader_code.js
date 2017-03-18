@@ -1,6 +1,6 @@
 app.controller('uploaderCtrl', ['$scope', 'FileUploader', function($scope, FileUploader) {
         var uploader = $scope.uploader = new FileUploader({
-            url: 'http://localhost:8080/uploadexcel'
+            url: 'http://gold.tkc.firm.in/uploadexcel'
         });
 
         // FILTERS

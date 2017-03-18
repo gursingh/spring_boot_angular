@@ -1,5 +1,7 @@
 package com.tarakshila.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +48,14 @@ public class EmailResponseDetailServiceImpl implements
 		Applicant applicant = applicantRepository
 				.findByEmailId(emailResponseDetail.getEmail());
 		if (applicant != null) {
-			EmailStatus emailStatus = emailStatusRepository
+			List<EmailStatus> emailStatusList = emailStatusRepository
 					.findByApplicantId(applicant.getId());
-			emailStatus.setReplied(true);
-			emailStatusRepository.save(emailStatus);
+			if (emailStatusList != null)
+				for (EmailStatus emailStatus : emailStatusList) {
+					emailStatus.setReplied(true);
+					emailStatusRepository.save(emailStatus);
+				}
+
 		}
 		return "sucess";
 	}

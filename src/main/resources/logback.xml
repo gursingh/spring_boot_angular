@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<!-- Name of the file where the log messages are written -->
+		<file>${catalina.home}/logs/confirmation.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.tarakshila" level="WARN">
+		<appender-ref ref="FILE" />
+	</logger>
+	<logger name="com.tarakshila" level="INFO">
+		<appender-ref ref="FILE" />
+	</logger>
+
+	<!-- Setting the root level of logging to INFO -->
+	<root level="info">
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

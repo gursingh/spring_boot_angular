@@ -1,6 +1,7 @@
 package com.tarakshila.handler.email;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -11,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
+
+import com.tarakshila.service.EmailStatusService;
 
 public class EmailHandlerExecutor {
 	private static EmailHandlerExecutor emailHandlerExecutor = null;
@@ -61,8 +64,10 @@ public class EmailHandlerExecutor {
 		executor.prestartAllCoreThreads();
 	}
 
-	public void sendMessage(EmailInfoBean emailInfoBean) {
-		executor.execute(new MailThread(emailInfoBean, executor));
+	public void sendMessage(List<EmailInfoBean> emailInfoBeans,
+			EmailStatusService emailStatusService) {
+		executor.execute(new MailThread(emailInfoBeans, executor,
+				emailStatusService));
 	}
 
 }

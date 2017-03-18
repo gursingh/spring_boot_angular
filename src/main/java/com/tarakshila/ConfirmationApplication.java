@@ -19,6 +19,7 @@ public class ConfirmationApplication extends SpringBootServletInitializer {
 	@Override
 	protected SpringApplicationBuilder configure(
 			SpringApplicationBuilder application) {
+		String d = "\"";
 		return application.sources(ConfirmationApplication.class);
 	}
 

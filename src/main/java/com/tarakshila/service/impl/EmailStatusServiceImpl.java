@@ -66,4 +66,9 @@ public class EmailStatusServiceImpl implements EmailStatusService {
 		return emailStatusRepository.countById();
 	}
 
+	@Override
+	public void updateEmailStatusByApplicantEmail(String emailId, boolean status) {
+		emailStatusRepository.updateEmailStatusByApplicantEmail(emailId, status);
+	}
+
 }

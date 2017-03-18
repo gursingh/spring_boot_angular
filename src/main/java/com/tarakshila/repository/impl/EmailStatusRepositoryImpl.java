@@ -14,6 +14,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.tarakshila.entity.Applicant;
 import com.tarakshila.entity.EmailStatus;
 import com.tarakshila.repository.EmailStatusRepository;
 
@@ -52,7 +53,7 @@ public class EmailStatusRepositoryImpl implements EmailStatusRepository {
 	public List<EmailStatus> findAll(int pageNumber, int pageSize) {
 		Session session = sessionFactory.getCurrentSession();
 		Query selectQuery = session
-				.createSQLQuery("select e_status.id as id,replied,clicked, a.name as name, a.email_id as emailId,e_status.creation_date as creationDate from email_status e_status inner join applicant a on e_status.applicant_id=a.id");
+				.createSQLQuery("select e_status.id as id,replied,clicked, a.name as name, a.email_id as emailId,e_status.creation_date as creationDate from email_status e_status inner join applicant a on e_status.applicant_id=a.id and a.mail_sent=true");
 		selectQuery.setFirstResult((pageNumber) * pageSize);
 		selectQuery.setMaxResults(pageSize);
 		@SuppressWarnings("unchecked")
@@ -72,13 +73,13 @@ public class EmailStatusRepositoryImpl implements EmailStatusRepository {
 	}
 
 	@Override
-	public EmailStatus findByApplicantId(long applicantId) {
+	public List<EmailStatus> findByApplicantId(long applicantId) {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria c = session.createCriteria(EmailStatus.class, "emailstatus");
 		c.createAlias("emailstatus.applicant", "applicant"); // inner join by
 																// default
 		c.add(Restrictions.eq("applicant.id", applicantId));
-		return (EmailStatus) c.uniqueResult();
+		return (List<EmailStatus>) c.list();
 	}
 
 	@Override
@@ -86,5 +87,18 @@ public class EmailStatusRepositoryImpl implements EmailStatusRepository {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria c = session.createCriteria(EmailStatus.class);
 		return (long) c.setProjection(Projections.rowCount()).uniqueResult();
+	}
+
+	@Override
+	public void updateEmailStatusByApplicantEmail(String emailId, boolean status) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria c = session.createCriteria(Applicant.class);
+		c.add(Restrictions.eq("emailId", emailId));
+		List<Applicant> applicants = c.list();
+		if (applicants != null & !applicants.isEmpty()) {
+			Applicant applicant = applicants.get(0);
+			applicant.setMailSent(true);
+			session.save(applicant);
+		}
 	}
 }

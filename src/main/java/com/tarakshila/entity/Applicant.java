@@ -22,6 +22,7 @@ public class Applicant {
 	@Column(unique = true)
 	private String emailId;
 	private Set<EmailStatus> emailStatus = new HashSet<EmailStatus>();
+	private boolean mailSent;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -65,6 +66,14 @@ public class Applicant {
 
 	public void setEmailStatus(Set<EmailStatus> emailStatus) {
 		this.emailStatus = emailStatus;
+	}
+
+	public boolean isMailSent() {
+		return mailSent;
+	}
+
+	public void setMailSent(boolean mailSent) {
+		this.mailSent = mailSent;
 	}
 
 }
